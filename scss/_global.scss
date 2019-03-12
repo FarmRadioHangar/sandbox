@@ -58,3 +58,9 @@ a {
     font-weight: 800;
   }
 }
+
+.card-demo {
+  @include media-breakpoint-up(md) {
+    min-height: 440px;
+  }
+}
