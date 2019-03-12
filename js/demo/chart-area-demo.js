@@ -66,6 +66,7 @@ var myLineChart = new Chart(ctx, {
   },
   options: {
     maintainAspectRatio: false,
+    responsive: true,
     layout: {
       padding: {
         left: 10,
