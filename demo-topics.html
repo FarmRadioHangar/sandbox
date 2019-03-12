@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Dashboard</title>
+
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this page -->
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    .navbar-nav .dropdown-menu {
+      margin-top: 0.3rem;
+    }
+    
+    .navbar-dark .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .card-header {
+      background-color: #1cc88a08;
+    }
+    
+    .topbar-divider {
+      border-right: 1px solid rgba(255, 255, 255, 0.4) !important;
+    }
+  </style>
+
+  <style>
+    #chartdiv {
+      width: 100%;
+      height: 409px;
+      overflow: hidden;
+    }
+
+    .map-marker {
+        /* adjusting for the marker dimensions
+        so that it is centered on coordinates */
+        margin-left: -8px;
+        margin-top: -8px;
+    }
+    .map-marker.map-clickable {
+        cursor: pointer;
+    }
+    .pulse {
+        width: 10px;
+        height: 10px;
+        border: 1px solid #4e73df;
+        -webkit-border-radius: 30px;
+        -moz-border-radius: 30px;
+        border-radius: 30px;
+        background-color: #4e73df;
+        z-index: 10;
+        position: absolute;
+    }
+    .map-marker .dot {
+        border: 10px solid #4e73df;
+        background: transparent;
+        -webkit-border-radius: 60px;
+        -moz-border-radius: 60px;
+        border-radius: 60px;
+        height: 50px;
+        width: 50px;
+        -webkit-animation: pulse 3s ease-out;
+        -moz-animation: pulse 3s ease-out;
+        animation: pulse 3s ease-out;
+        -webkit-animation-iteration-count: infinite;
+        -moz-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        z-index: 1;
+        opacity: 0;
+      }
+      @-moz-keyframes pulse {
+       0% {
+          -moz-transform: scale(0);
+          opacity: 0.0;
+       }
+       25% {
+          -moz-transform: scale(0);
+          opacity: 0.1;
+       }
+       50% {
+          -moz-transform: scale(0.2);
+          opacity: 0.3;
+       }
+       75% {
+          -moz-transform: scale(1);
+          opacity: 0.5;
+       }
+       100% {
+          -moz-transform: scale(1.8);
+          opacity: 0.0;
+       }
+      }
+      @-webkit-keyframes "pulse" {
+       0% {
+          -webkit-transform: scale(0);
+          opacity: 0.0;
+       }
+       25% {
+          -webkit-transform: scale(0);
+          opacity: 0.1;
+       }
+       50% {
+          -webkit-transform: scale(0.2);
+          opacity: 0.3;
+       }
+       75% {
+          -webkit-transform: scale(1);
+          opacity: 0.5;
+       }
+       100% {
+          -webkit-transform: scale(1.8);
+          opacity: 0.0;
+       }
+      }
+  </style>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Topbar -->
+  <nav class="navbar navbar-expand navbar-dark bg-success topbar static-top">
+
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="text-white btn btn-link d-md-none rounded-circle mr-3">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <a class="navbar-brand" href="#">Farm Radio Interactive</a>
+
+  </nav>
+  <!-- End of Topbar -->
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid mt-4">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">
+              Campaign participation
+            </h1>
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-12">
+              <div class="card mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h5 class="m-0 font-weight-bold text-success">Topics</h5>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item ">
+    <h5 class="m-0">Cassava</h5>
+  </li>
+  <li class="list-group-item">
+    <h5 class="m-0">Potato</h5>
+  </li>
+  <li class="list-group-item">
+    <h5 class="m-0">Farming seasons</h5>
+  </li>
+  <li class="list-group-item">
+    <h5 class="m-0">General advice</h5>
+  </li>
+  <li class="list-group-item">
+    <h5 class="m-0">Equipment</h5>
+  </li>
+</ul>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select “Logout” below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-success" href="index.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- amCharts -->
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+
+  <!-- <script src="vendor/geodata/worldLow.js"></script> -->
+  <script src="https://www.amcharts.com/lib/4/geodata/region/world/africaLow.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/moonrisekingdom.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+  <!-- JQCloud -->
+  <script src="https://cdn.bootcss.com/jqcloud/1.0.4/jqcloud-1.0.4.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+  <!-- <script src="js/demo/chart-bar-demo.js"></script> -->
+
+  <script>
+    // Themes begin
+    am4core.useTheme(am4themes_moonrisekingdom);
+    am4core.useTheme(am4themes_animated);
+    // Themes end
+
+    // Create map instance
+    var chart = am4core.create("chartdiv", am4maps.MapChart);
+
+    // Set map definition
+    chart.geodata = am4geodata_region_world_africaLow;
+
+    // Set projection
+    chart.projection = new am4maps.projections.Miller();
+
+    // Set initial zoom and geo point
+    chart.homeZoomLevel = 3;
+
+    chart.homeGeoPoint = {
+      latitude: 1.796820,
+      longitude: 37.87389750
+    };
+
+    chart.colors.list = [
+      am4core.color("#4e73df"),
+      am4core.color("#1cc88a"),
+      am4core.color("#ff6f91"),
+      am4core.color("#ff9671"),
+      am4core.color("#ffc75f"),
+      am4core.color("#f9f871")
+    ];
+
+/*
+    // Create map polygon series
+    var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+
+    // Make map load polygon (like country names) data from GeoJSON
+    polygonSeries.useGeodata = true;
+
+    // Configure series
+    var polygonTemplate = polygonSeries.mapPolygons.template;
+
+    //polygonTemplate.tooltipText = "{name}";
+
+    polygonTemplate.fill = chart.colors.getIndex(0).lighten(0.5);
+    //polygonTemplate.fill = chart.colors.getIndex(1);
+
+    // Create hover state and set alternative fill color
+    var hs = polygonTemplate.states.create("hover");
+    hs.properties.fill = chart.colors.getIndex(0).lighten(0.3);
+*/
+
+    function createSeries(name, include, color, hoverColor) {
+      var series = chart.series.push(new am4maps.MapPolygonSeries());
+      series.name = name;
+      series.useGeodata = true;
+      series.include = include;
+      series.fill = am4core.color(color);
+      //series.events.on("over", over);
+      //series.events.on("out", out);
+      //
+      //series.mapPolygons.template.tooltipText = "{series.name}: [bold]{name}[/]";
+      series.mapPolygons.template.fill = am4core.color(color);
+
+      //var hover = series.mapPolygons.template.states.create("highlight");
+      //hover.properties.fill = am4core.color(hoverColor);
+
+      return series;
+    }
+
+    var countries = ["TZ", "UG", "KE", "ET"];
+
+    createSeries("East Africa", countries, chart.colors.getIndex(1).lighten(0.5), "#669DA6");
+
+    var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    polygonSeries.exclude = countries;
+
+    polygonSeries.useGeodata = true;
+
+    //polygonSeries.mapPolygons.template.fill = chart.colors.getIndex(0);
+
+    // Configure series
+    var polygonTemplate = polygonSeries.mapPolygons.template;
+
+    // Add image series
+    var imageSeries = chart.series.push(new am4maps.MapImageSeries());
+    imageSeries.mapImages.template.propertyFields.longitude = "longitude";
+    imageSeries.mapImages.template.propertyFields.latitude = "latitude";
+    imageSeries.data = [ {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Brussels",
+      "latitude": 0.31,
+      "longitude": 32.581354,
+      "animate": true
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Copenhagen",
+      "latitude": 2.756373,
+      "longitude": 32.229665
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Paris",
+      "latitude": 1.592681,
+      "longitude": 35.651907
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Reykjavik",
+      "latitude": -3.390912,
+      "longitude": 34.31138
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Moscow",
+      "latitude": -4.705953,
+      "longitude": 36.81077
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Madrid",
+      "latitude":  -5.461022,
+      "longitude": 36.992045
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "London",
+      "latitude": 1.782054,
+      "longitude": 38.798621
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Peking",
+      "latitude": 2.967537,
+      "longitude": 32.074988
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "New Delhi",
+      "latitude": -0.67858,
+      "longitude": 31.174109
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Tokyo",
+      "latitude": 0.463977,
+      "longitude":36.161902 
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Ankara",
+      "latitude": -0.458865,
+      "longitude": 35.414832
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Buenos Aires",
+      "latitude":  -3.532801,
+      "longitude": 33.525184
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Brasilia",
+      "latitude": -6.727537,
+      "longitude": 32.536414
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Ottawa",
+      "latitude": 1.386698,
+      "longitude": 36.821082
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Washington",
+      "latitude": 2.177325,
+      "longitude":32.712195 
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Kinshasa",
+      "latitude": 2.177325,
+      "longitude":33.964637
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Cairo",
+      "latitude": 3.406309,
+      "longitude": 33.810828
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Pretoria",
+      "latitude": -0.195197,
+      "longitude":39.238074
+    } ];
+
+
+
+    // add events to recalculate map position when the map is moved or zoomed
+    chart.events.on( "mappositionchanged", updateCustomMarkers );
+
+    // this function will take current images on the map and create HTML elements for them
+    function updateCustomMarkers( event ) {
+
+      // go through all of the images
+      imageSeries.mapImages.each(function(image) {
+        // check if it has corresponding HTML element
+        if (!image.dummyData || !image.dummyData.externalElement) {
+          // create onex
+          image.dummyData = {
+            externalElement: createCustomMarker(image)
+          };
+        }
+
+        // reposition the element accoridng to coordinates
+        var xy = chart.geoPointToSVG( { longitude: image.longitude, latitude: image.latitude } );
+        image.dummyData.externalElement.style.top = xy.y + 'px';
+        image.dummyData.externalElement.style.left = xy.x + 'px';
+      });
+
+    }
+
+    // this function creates and returns a new marker element
+    function createCustomMarker( image ) {
+
+      var chart = image.dataItem.component.chart;
+
+      // create holder
+      var holder = document.createElement( 'div' );
+      holder.className = 'map-marker';
+      holder.title = image.dataItem.dataContext.title;
+      holder.style.position = 'absolute';
+
+      // maybe add a link to it?
+      //if ( undefined != image.url ) {
+      //  holder.onclick = function() {
+      //    window.location.href = image.url;
+      //  };
+      //  holder.className += ' map-clickable';
+      //}
+
+      if (image.dataItem.dataContext.animate) {
+        // create dot
+        var dot = document.createElement( 'div' );
+        dot.className = 'dot';
+        holder.appendChild( dot );
+      }
+
+      // create pulse
+      var pulse = document.createElement( 'div' );
+      pulse.className = 'pulse';
+      holder.appendChild( pulse );
+
+      // append the marker to the map container
+      chart.svgContainer.htmlElement.appendChild( holder );
+
+      return holder;
+    }
+  </script>
+
+</body>
+
+</html>
