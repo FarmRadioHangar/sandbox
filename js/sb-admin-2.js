@@ -48,7 +48,8 @@
 
   $(function() {
     $('#ticker').easyTicker({
-      height: 30
+      height: 30,
+      interval: 3400
     });
   });
 
