@@ -46,4 +46,10 @@
     e.preventDefault();
   });
 
+  $(function() {
+    $('#ticker').easyTicker({
+      height: 30
+    });
+  });
+
 })(jQuery); // End of use strict
