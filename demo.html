@@ -32,6 +32,15 @@
     .topbar-divider {
       border-right: 1px solid rgba(255, 255, 255, 0.4) !important;
     }
+
+    #ticker ul {
+      padding: 0;
+    }
+
+    #ticker ul li {
+      list-style: none;
+    }
+
   </style>
 
   <style>
@@ -161,6 +170,75 @@
             <h1 class="h3 mb-0 text-gray-800">
               Campaign participation
             </h1>
+          </div>
+
+          <div class="row">
+
+            <div class="col-xl-8 col-lg-8  mb-4">
+
+              <div class="card border-left-warning h-100">
+                <div class="card-body">
+                  <div class="row no-gutters">
+                    <div class="col mr-2">
+
+                  <div class="row no-gutters">
+                    <div class="col-auto mr-3" style="justify-content: center;">
+                      <span class="badge badge-pill badge-danger" style="display: flex; justify-content: center; align-items: center; font-size: 1.3em; border-radius: 50%; width: 1.9em; height: 1.9em;">3</span>
+                    </div>
+
+                    <div class="col">
+                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">New listener questions
+                      </div>
+
+                      <div id="ticker"> <!-- class="row no-gutters align-items-center mb-2"> -->
+                        <ul>
+                          <li>Hello. My name is Augustus Pablo. My maize is growing too slow and&hellip;</li>
+                          <li>I am interested in buying a tractor but my husband wants to spend the money on his stamp collection&hellip;</li>
+                          <li>What soil is ideal for growing spaghetti?</li>
+                        </ul>
+                      </div>
+
+                    </div>
+                  </div>
+                      <!--
+                      <div>
+                        <a target="_blank" rel="nofollow" href="index.html">Manage questions &rarr;</a>
+                      </div>
+                      -->
+                      <div>
+                        <a target="demo-questions.html" rel="nofollow" href="index.html">Manage questions &rarr;</a>
+                      </div>
+                    </div>
+                    <!--
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                    -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-lg-4 mb-4">
+
+              <div class="card border-left-primary h-100">
+                <div class="card-body">
+
+                  <div class="mb-2 row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total number of participants</div>
+                      <div class="h1 mb-0 text-gray-600">688</div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
           </div>
 
           <div class="row">
@@ -805,6 +883,9 @@
   <!-- Page level plugins -->
   <script src="vendor/chart.js/Chart.min.js"></script>
 
+  <!-- jQuery Easy Ticker -->
+  <script src="vendor/jquery-easy-ticker-master/jquery.easy-ticker.min.js"></script>
+
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
@@ -1071,6 +1152,7 @@
 
       return holder;
     }
+
   </script>
 
 </body>
