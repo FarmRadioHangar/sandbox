@@ -50,7 +50,7 @@
     $('#ticker').easyTicker({
       height: 30,
       interval: 3400
-    }).show();
+    }).css('visibility', 'visible');
   });
 
 })(jQuery); // End of use strict
